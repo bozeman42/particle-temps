@@ -1,3 +1,9 @@
+## SETUP
+create a `.env` file in your root directory. set `PARTICLE_TOKEN=yourtokenhere`
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
