@@ -1,17 +1,9 @@
 const router = require('express').Router()
-const getDevices = require('../../modules/particle/particleDevices')
-
+const { getAllDevices, getConnectedDevices } = require('../../modules/particle/particleDevices')
 
 router.get('/',(req,res) => {
-  getDevices()
-  .then(result => {
-    console.log(result)
-    res.send(result)
-  })
-  .catch(err => {
-    console.log(err)
-    res.send(err)
-  })
+  const devices = getConnectedDevices()
+  .then(devices => res.send(devices))
 })
 
 module.exports = router
