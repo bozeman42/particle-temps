@@ -1,8 +1,27 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import axios from 'axios'
+import highcharts from 'highcharts'
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.chartRef = React.createRef()
+    this.state = {
+      data: []
+    }
+  }
+
+  componentDidMount() {
+    const app = this
+    const interval = setInterval(() => axios.get('/api/temp')
+      .then(response => {
+        app.setState({
+          data: response.data
+        },() => console.log(this.state))
+      }),5000)
+  }
 
   render() {
     return (
@@ -21,6 +40,7 @@ class App extends Component {
             Learn React
           </a>
         </header>
+        <div ref={this.chartRef} />
       </div>
     );
   }
